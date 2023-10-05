@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const TodoRoutes = require('./routes/todosRoute')
+const TodoRoutes = require('./routes/todosRoute');
+const UserRoutes = require('./routes/usersRoute')
 const app = express();
 const PORT = process.env.PORT || 3050;
 
@@ -22,7 +23,8 @@ const connectDB = async () => {
 app.get('/', (req, res) => {
     res.send({title: 'Todo'})
 })
-app.use('/api/todos', TodoRoutes)
+app.use('/api/todos', TodoRoutes);
+app.use('/api/users', UserRoutes)
 connectDB().then(() => {
     app.listen(PORT, () => {
         console.log(`Listening on port ${PORT}`);

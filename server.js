@@ -22,7 +22,7 @@ const connectDB = async () => {
 app.get('/', (req, res) => {
     res.send({title: 'Todo'})
 })
-app.use('api/todos', TodoRoutes)
+app.use('/api/todos', TodoRoutes)
 connectDB().then(() => {
     app.listen(PORT, () => {
         console.log(`Listening on port ${PORT}`);

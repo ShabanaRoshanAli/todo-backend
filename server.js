@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const Todo = require('./models/todos');
 
 const app = express();
 const PORT = process.env.PORT || 3050;
@@ -19,14 +18,6 @@ const connectDB = async () => {
 
 app.get('/', (req, res) => {
     res.send({title: 'Todo'})
-})
-app.get('/todos', async(req, res) =>{
- const todosList = await Todo.find();
- if(todosList) {
-    res.json(todosList).status(200)
- }else {
-    res.send("Something wemt wrong.")
- }
 })
 connectDB().then(() => {
     app.listen(PORT, () => {
